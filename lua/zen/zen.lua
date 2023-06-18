@@ -82,7 +82,7 @@ local theme = lush(function(injected_functions)
     Constant       { fg = white }, -- (preferred) any constant
     String         { fg = pink}, --   a string constant: "this is a string"
     -- Character      { }, --  a character constant: 'c', '\n'
-    Number         { fg = num }, --   a number constant: 234, 0xff
+    -- Number         { fg = num }, --   a number constant: 234, 0xff
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
 
@@ -90,12 +90,12 @@ local theme = lush(function(injected_functions)
     -- Function       { }, -- function name (also: methods for classes)
 
     Statement      { fg = grayish }, -- (preferred) any statement
-    -- Conditional    { }, --  if, then, else, endif, switch, etc.
-    -- Repeat         { }, --   for, do, while, etc.
-    -- Label          { }, --    case, default, etc.
-    -- Operator       { }, -- "sizeof", "+", "*", etc.
-    -- Keyword        { }, --  any other keyword
-    -- Exception      { }, --  try, catch, throw
+    Conditional    { fg = grayish }, --  if, then, else, endif, switch, etc.
+    Repeat         { fg = grayish }, --   for, do, while, etc.
+    Label          { fg = grayish }, --    case, default, etc.
+    Operator       { fg = grayish }, -- "sizeof", "+", "*", etc.
+    Keyword        { fg = grayish }, --  any other keyword
+    Exception      { fg = grayish }, --  try, catch, throw
 
     PreProc        { fg = white }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
@@ -103,14 +103,14 @@ local theme = lush(function(injected_functions)
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = white }, -- (preferred) int, long, char, etc.
+    Type           { fg = lightblue }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
     Special        { fg = white }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
-    -- Tag            { }, --    you can use CTRL-] on this
+    Tag            { fg = lightblue }, --    you can use CTRL-] on this
     -- Delimiter      { }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
@@ -187,7 +187,7 @@ local theme = lush(function(injected_functions)
     -- sym("@constant") { },
     -- sym("@constant.builtin") { },
     -- sym("@constant.macro") { },
-    -- sym("@constructor") { },
+    sym("@constructor") { fg = lightblue },
     -- sym("@debug") { },
     -- sym("@define") { },
     -- sym("@error") { },
@@ -197,7 +197,7 @@ local theme = lush(function(injected_functions)
     -- sym("@function") { },
     -- sym("@function.builtin") { },
     -- sym("@function.macro") { },
-    -- sym("@include") { },
+    sym("@include") { fg = grayish },
     -- sym("@keyword") { },
     -- sym("@keyword.function") { },
     -- sym("@keyword.operator") { },
@@ -212,7 +212,7 @@ local theme = lush(function(injected_functions)
     -- sym("@preproc") { },
     -- sym("@property") { },
     -- sym("@punctuation.delimiter") { },
-    -- sym("@punctuation.bracket") { },
+    sym("@punctuation.bracket") { fg = grayish },
     -- sym("@punctuation.special") { },
     -- sym("@repeat") { },
     -- sym("@storageclass") { },
@@ -222,7 +222,7 @@ local theme = lush(function(injected_functions)
     -- sym("@string.special") { },
     -- sym("@symbol") { },
     -- sym("@tag") { },
-    -- sym("@tag.attribute") { },
+    sym("@tag.attribute") { fg = white },
     -- sym("@tag.delimiter") { },
     -- sym("@text") { },
     -- sym("@text.strong") { },
@@ -242,10 +242,10 @@ local theme = lush(function(injected_functions)
     sym("@text.note") { Todo },
     -- sym("@text.warning") { },
     -- sym("@text.danger") { },
-    -- sym("@type") { },
-    -- sym("@type.builtin") { },
-    -- sym("@variable") { },
-    -- sym("@variable.builtin") { },
+    sym("@type") { fg = lightblue},
+--    sym("@type.builtin") { fg  = lightblue },
+    sym("@variable") { fg = lightblue },
+--    sym("@variable.builtin") { fg = lightblue },
 
     -- External Plugins
 
@@ -295,5 +295,6 @@ local theme = lush(function(injected_functions)
     MasonHeading { bold = true },
   }
 end)
+
 -- return our parsed theme for extension or use else where.
 return theme

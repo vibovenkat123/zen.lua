@@ -1,7 +1,9 @@
 -- zen
 local lush = require('lush')
 local hsl  = lush.hsl
+local grayish = hsl(0, 11,  76)
 local lightblue = hsl(200, 50, 80)
+local num = hsl(223, 40, 70)
 local black     = hsl(213,  12, 17)
 local white     = hsl(  0,   0, 92)
 local grey      = hsl(  0,   0, 47)
@@ -80,14 +82,14 @@ local theme = lush(function(injected_functions)
     Constant       { fg = white }, -- (preferred) any constant
     String         { fg = pink}, --   a string constant: "this is a string"
     -- Character      { }, --  a character constant: 'c', '\n'
-    -- Number         { }, --   a number constant: 234, 0xff
+    Number         { fg = num }, --   a number constant: 234, 0xff
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
 
     Identifier     { fg = lightblue }, -- (preferred) any variable name
     -- Function       { }, -- function name (also: methods for classes)
 
-    Statement      { fg = lightgrey, gui = "bold" }, -- (preferred) any statement
+    Statement      { fg = grayish }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
